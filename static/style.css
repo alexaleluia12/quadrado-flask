@@ -1,0 +1,28 @@
+/* Page body */
+body { font-family: Arial, Helvetica, sans-serif; }
+/* Definition lists */
+dl { width: 100%; margin: 2em 0; padding: 0; clear: both; overflow: auto; }
+dt { width: 30%; float: left; margin: 0; padding: 5px 9.9% 5px 0;
+border-top: 1px solid #DDDDB7; font-weight: bold; overflow: auto;
+clear: left; }
+dd { width: 60%; float: left; margin: 0; padding: 6px 0 5px 0; border-top:
+1px solid #DDDDB7; overflow: auto; }
+/* Headings */
+h1 { font-weight:
+h2 { font-weight:
+h3 { font-weight:
+1.2em; }
+h4 { font-weight:
+h5 { font-weight:
+bold; margin: 35px 0 14px; color: #666; font-size: 1.5em; }
+bold; margin: 30px 0 12px; color: #666; font-size: 1.3em; }
+normal; margin: 30px 0 12px; color: #666; font-size:
+bold; margin: 25px 0 12px; color: #666; font-size: 1.0em; }
+bold; margin: 25px 0 12px; color: #666; font-size: 0.9em; }
+/* Forms */
+label { display: block; float: left; clear: both; text-align: right;
+margin: 0.6em 5px 0 0; width: 40%; }
+input, select, textarea { float: right; margin: 1em 0 0 0; width: 57%; }
+input { border: 1px solid #666; }
+input[type=radio], input[type=checkbox], input[type=submit],
+input[type=reset], input[type=button], input[type=image] { width: auto; }

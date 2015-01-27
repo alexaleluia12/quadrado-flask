@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<title>n</title>
+  	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  	<style>
+  	  .destac {
+  	  	background-color: rgb(150, 160, 240);
+  	  }
+  	  ul {
+  	  	list-style: none;
+  	  	width: 300px;
+  	  }
+  	</style>
+  </head>
+  <body>
+    <h2>Quadrado de numeros</h2>
+    <p>inicio {{ inicio }} até {{ fim }}</p>
+    
+    
+    <ul>
+    {% for num in numList %}
+      {% if num % 2 == 0 %}
+        <li class="destac">{{ num }}</li>
+      {% else %}
+        <li>{{ num }}</li>
+      {% endif %} 
+    {% endfor %}
+    </ul>
+    {% if inicio > 0 %}
+       <a href="{{ url_for('home', numero=inicio) }}">back</a>
+    {% endif %}
+    <a href="{{ url_for('home', numero=fim) }}">next</a>   
+    
+   
+  	
+  </body>
+  
+</html>
