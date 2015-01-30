@@ -1,57 +1,40 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 
+# TODO
+# corigir porque o angularjs nao esta interando sobre o valor retornado pelo ajax
 
 class Controle():
-	inicio = True
-		
-	
+    stade  = True
+    SIZE   = 10
+    init   = 1
+    end    = 10
+      
+    def increse(self):
+        self.init += self.SIZE
+        self.end += self.SIZE
+        return range(self.init, self.end + 1)
+    
+    
+
 
 app = Flask(__name__)
 
 
 n = Controle();
-original = (0,9)
-SIZE = 10
-inicio = 0
-fim = 10
+
 @app.route("/", methods=["GET", "POST"])
 def home():
-	global inicio, fim
-	numList = []
-	
-	if n.inicio: 
-		numList = range(inicio, fim)
-		n.inicio = False
-		return render_template('index.html', inicio=inicio, fim=fim, numList=numList)		
-	else:
-		try: 
-			userInicio = int(request.args["numero"])
-			if userInicio > inicio: 
-				inicio = fim
-				fim += SIZE
-				numList = range(inicio, fim)
-				return render_template('index.html', inicio=inicio, fim=fim, numList=numList)
-			else:
-				if userInicio - SIZE > 0 :
-					fim = inicio
-					inicio -= SIZE
-					numList = range(inicio, fim )
-					return render_template('index.html', inicio=inicio, fim=fim, numList=numList)
-					
-				else:
-					inicio, fim = original
-					numList = range(inicio, fim)
-					return render_template('index.html', inicio=inicio, fim=fim, numList=numList)
-		
-		except ValueError:
-			inicio, fim = original
-			numList = range(inicio, fim)
-			return render_template('index.html', inicio=inicio, fim=fim, numList=numList)
-	
-    
+    if n.stade:
+        n.stade = False
+        return render_template('index.html', numList=range(n.init, n.end + 1))
+
+@app.route('/numdata')
+def api():
+    val = request.args.get('op', 0, type=int)
+    return jsonify(numList=n.increse())
     
 
 if __name__ == "__main__":
