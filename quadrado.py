@@ -4,6 +4,10 @@
 from flask import Flask, render_template, request, jsonify
 
 # TODO
+# adicionar o bootstrap (visual melhor)
+# add img e cada ves o um botao eh clidado faz uma animacao com a img
+# ver se functiona o com https
+
 
 class Controle():
     stade  = True
@@ -15,9 +19,13 @@ class Controle():
       
     def increse(self):
         self.init += self.SIZE
-        self.end += self.SIZE
+        self.end  += self.SIZE
         return range(self.init, self.end + 1)
     
+    def decrese(self):
+        self.init -= self.SIZE
+        self.end  -= self.SIZE
+        return range(self.init, self.end + 1)
     
 
 
@@ -26,7 +34,7 @@ app = Flask(__name__)
 
 n = Controle();
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def home():
     if n.stade:
         n.stade = False
@@ -34,8 +42,16 @@ def home():
 
 @app.route('/numdata')
 def api():
+    listToReturn = None
     val = request.args.get('op', 0, type=int)
-    return jsonify(numList=n.increse())
+    if val == 1:
+        listToReturn = n.increse()
+    elif val == -1:
+        listToReturn = n.decrese()
+    else:
+        listToReturn = range(1, n.SIZE + 1)
+        
+    return jsonify(numList=listToReturn)
     
 
 if __name__ == "__main__":

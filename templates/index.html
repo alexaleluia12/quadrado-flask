@@ -13,18 +13,31 @@
   		  .controller('Control', ["$http", function($http){
   		    var self = this;
   		    
+  		    self.init = 1;
+  		    self.end = 10;
   		    self.lt = numList;
   		    
-  		    self.get = function(){
-  		      $http.get('/numdata', {params:{'op': 1}})
+  		    
+  		    self.updateVar = function(){
+  		      self.init = self.lt[0];
+  		      self.end  = self.lt[self.lt.length - 1]
+  		    };
+  		    
+  		    self.canShowBack = function(){
+  		      return self.init > 1;
+  		    }
+  		    
+  		    self.get = function(value){
+  		      $http.get('/numdata', {params:{'op': value}})
   		        .then(function(resp){
   		          self.lt = resp.data['numList'];
-  		          console.log(typeof self.lt)
+  		          self.updateVar();
   		        }, function(err){
   		          console.log('umm eroo aconteceu; ', err);
   		        
   		        })
   		    };
+  		    
   		  }]);
   	</script>
   	<style>
@@ -36,27 +49,28 @@
   	  .even {
   	    background-color: rgb(150, 160, 240);
   	  }
-  	  ul li span {
-  	    display: inherit;
-  	  }
   	  ul li {
   	    text-align: center;
   	  }
   	</style>
   </head>
   <body ng-controller="Control as ctrl">
-    <h2>Quadrado de numeros</h2>
+    <h2>Quadrado de números</h2>
     <p>inicio <span ng-bind="ctrl.init"></span> até <span ng-bind="ctrl.end"></span></p>
     
     <ul>
-    	<li ng-repeat="elemento in ctrl.lt"><span ng-bind="elemento" ng-class-even="'even'"></span></li>
+    	<li ng-repeat="elemento in ctrl.lt">
+    	    <div ng-class-even="'even'">
+    	        <span ng-bind="elemento"></span>
+    	        <sup>2</sup> = <span ng-bind="elemento * elemento"></span>
+    	    </div>
     	
-    	
+    	    
+    	</li>
+    	    	
     </ul>
-    
-    <button type="button" ng-click="ctrl.get()">next</button>
-    
-   
+    <button ng-if="ctrl.canShowBack()" ng-click="ctrl.get(-1)">back</button>
+    <button type="button" ng-click="ctrl.get(1)">next</button>       
   	
   </body>
   
