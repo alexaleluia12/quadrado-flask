@@ -4,13 +4,14 @@
 from flask import Flask, render_template, request, jsonify
 
 # TODO
-# corigir porque o angularjs nao esta interando sobre o valor retornado pelo ajax
 
 class Controle():
     stade  = True
     SIZE   = 10
-    init   = 1
-    end    = 10
+    
+    def __init__(self):
+        self.init   = 1
+        self.end    = 10
       
     def increse(self):
         self.init += self.SIZE
