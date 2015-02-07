@@ -14,6 +14,10 @@ class Controle():
     def __init__(self):
         self.init   = 1
         self.end    = 10
+    
+    def reset(self):
+        self.init = 1
+        self.end = 10
       
     def increse(self):
         self.init += self.SIZE
@@ -36,6 +40,9 @@ n = Controle();
 def home():
     if n.stade:
         n.stade = False
+        return render_template('index.html', numList=range(n.init, n.end + 1))
+    else:
+        n.reset()
         return render_template('index.html', numList=range(n.init, n.end + 1))
 
 @app.route('/numdata')
