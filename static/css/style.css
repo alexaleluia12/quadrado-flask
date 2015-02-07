@@ -1,13 +1,28 @@
 
 ul {
   list-style: none;
+  padding: 0px;
   width: 300px;
+  padding-left: 10px;
+  margin-left:  10px
+}
+
+ul li {
+  text-align: center;
+}
+
+section {
+  padding-top: 0.5em;
+}
+
+section div img {
+  padding-top: 4em;
 }
 
 .even {
   background-color: rgb(150, 160, 240);
 }
 
-ul li {
-  text-align: center;
+.recuo {
+  margin-left: 1em;
 }
