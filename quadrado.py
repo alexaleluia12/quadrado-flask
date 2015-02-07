@@ -4,9 +4,7 @@
 from flask import Flask, render_template, request, jsonify
 
 # TODO
-# adicionar o bootstrap (visual melhor)
-# add img e cada ves o um botao eh clidado faz uma animacao com a img
-# ver se functiona o com https
+
 
 
 class Controle():
