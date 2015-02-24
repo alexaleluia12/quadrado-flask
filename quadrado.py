@@ -5,45 +5,31 @@ from flask import Flask, render_template, request, jsonify
 
 # TODO
 
-
-
-class Controle():
-    stade  = True
-    SIZE   = 10
-    
-    def __init__(self):
-        self.init   = 1
-        self.end    = 10
-    
-    def reset(self):
-        self.init = 1
-        self.end = 10
-      
-    def increse(self):
-        self.init += self.SIZE
-        self.end  += self.SIZE
-        return range(self.init, self.end + 1)
-    
-    def decrese(self):
-        self.init -= self.SIZE
-        self.end  -= self.SIZE
-        return range(self.init, self.end + 1)
-    
-
+class Quadrado(object):
+    _size   = 9
+    _rangeNun = 1
+    _initDefault = 1
+    _endDefault = 10
+    def getList(self, init, end):
+        """ return a list of int between (init, end) inclusive 
+        
+        Diference between end and init should be 9, otherwise 
+        [1,2...10] given.
+        """
+        sanityInt = end - init
+        if self._size == sanityInt:
+            return list(range(init, end + self._rangeNun))
+        return list(range(self._initDefault, self._endDefault + self._rangeNun))
 
 app = Flask(__name__)
 
 
-n = Controle();
+square = Quadrado();
 
 @app.route("/")
 def home():
-    if n.stade:
-        n.stade = False
-        return render_template('index.html', numList=range(n.init, n.end + 1))
-    else:
-        n.reset()
-        return render_template('index.html', numList=range(n.init, n.end + 1))
+    return render_template('index.html', numList=square.getList(1, 10))
+
 
 @app.route('/numdata')
 def api():
@@ -60,4 +46,4 @@ def api():
     
 
 if __name__ == "__main__":
-	app.run()    
+	pass#app.run()    
