@@ -24,7 +24,7 @@ class Quadrado(object):
 app = Flask(__name__)
 
 
-square = Quadrado();
+square = Quadrado()
 
 @app.route("/")
 def home():
@@ -33,17 +33,12 @@ def home():
 
 @app.route('/numdata')
 def api():
-    listToReturn = None
-    val = request.args.get('op', 0, type=int)
-    if val == 1:
-        listToReturn = n.increse()
-    elif val == -1:
-        listToReturn = n.decrese()
-    else:
-        listToReturn = range(1, n.SIZE + 1)
-        
-    return jsonify(numList=listToReturn)
+    lst = []
+    init = request.args.get('init', 1, type=int)
+    end = request.args.get('end', 10, type=int)
+    lst = square.getList(init, end)
+    return jsonify(numList=lst)
     
 
 if __name__ == "__main__":
-	pass#app.run()    
+	app.run()    

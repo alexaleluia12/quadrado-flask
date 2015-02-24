@@ -8,7 +8,8 @@ angular.module('quadrado', [])
   .controller('Control', ["$http", function($http){
      var self = this;
      var SIZE = 45;
-            
+     var GAP = 10;
+     
   	 self.lt = window.numList;
   	 self.init = self.lt[0];
   	 self.end = self.lt[self.lt.length - 1]
@@ -35,19 +36,22 @@ angular.module('quadrado', [])
   	 };
   		    
      self.get = function(value){
+       var requestList = [];
   	   if (value === 1){
          self.increase();
+         requestList = {'init': self.end+1, 'end': GAP+self.end};
   	   } else {
          self.decrease();
+         requestList = {'init': self.init-GAP, 'end': self.init-1};
        }
-  	   $http.get('/numdata', {params:{'op': value}})
+  	   $http.get('/numdata', {params: requestList})
           .then(function(resp){
   		     self.lt = resp.data['numList'];
   		     self.updateVar();
   		     }, function(err){
-  		          console.log('umm eroo aconteceu; ', err);
+  		          console.log('hmmm error .. ; ', err);
   		        
-  		     })
+  		     });
      };
   		    
   }]);
