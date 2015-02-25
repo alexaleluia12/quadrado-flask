@@ -31,3 +31,17 @@ section div img {
 .recuo {
   margin-left: 1em;
 }
+
+.container .myButtons { /* to buttons not afect each other */
+  position: relative;
+}
+
+.myButtons button {
+  position: absolute;
+}
+
+div.myButtons button:last-child { /* make the next button fixed */
+  margin-left: 8em;
+}
+
+
