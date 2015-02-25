@@ -44,4 +44,11 @@ div.myButtons button:last-child { /* make the next button fixed */
   margin-left: 8em;
 }
 
-
+/*
+Media Query
+*/
+@media (max-width: 992px){
+  .col-md-6 img {
+    display: none;
+  }
+}
