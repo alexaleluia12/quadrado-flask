@@ -1,9 +1,7 @@
-#!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
 from flask import Flask, render_template, request, jsonify
 
-# TODO
 
 class Quadrado(object):
     _size   = 9
@@ -19,7 +17,8 @@ class Quadrado(object):
         sanityInt = end - init
         if self._size == sanityInt:
             return list(range(init, end + self._rangeNun))
-        return list(range(self._initDefault, self._endDefault + self._rangeNun))
+        return list(range(self._initDefault, 
+                          self._endDefault + self._rangeNun))
 
 app = Flask(__name__)
 
@@ -41,4 +40,4 @@ def api():
     
 
 if __name__ == "__main__":
-	app.run()    
+    app.run()
