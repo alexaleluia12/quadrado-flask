@@ -1,0 +1,30 @@
+{
+  "name": "quadrado-flask",
+  "version": "1.0.0",
+  "description": "simple thing powered by flask and angular",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexaleluia12/quadrado-flask.git"
+  },
+  "author": "Alex Aleluia",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/alexaleluia12/quadrado-flask/issues"
+  },
+  "homepage": "https://github.com/alexaleluia12/quadrado-flask",
+  "dependencies": {
+    "bower": "^1.4.1",
+    "jasmine-core": "^2.2.0",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5",
+    "protractor": "^2.0.0"
+  }
+}
