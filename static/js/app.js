@@ -37,7 +37,7 @@ angular.module('quadrado', [])
 
      self.get = function(value){
        var requestList = [];
-       if (value === 1){
+       if (value === 1){// 1 indicate to increases, otherwise decreases
           self.increase();
           requestList = {'init': self.end+1, 'end': GAP+self.end};
        } else {
