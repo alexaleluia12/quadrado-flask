@@ -34,3 +34,10 @@ python quadrado.py
 ```
 \* Cancel: Ctrl + c<br/>
 \* Get out virtualenv: `$ deactivate`
+
+--
+Run test
+```sh
+cd tests
+PYTHONPATH=.. python quadrado_test.py
+```
