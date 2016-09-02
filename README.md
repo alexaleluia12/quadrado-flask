@@ -13,7 +13,7 @@ You should have this things instaled:<br/>
 make * optional<br/>
 git<br/>
 pip<br/>
-python 2.7<br/>
+python 3+<br/>
 virtualenv<br/>
 
 \* Run local
@@ -22,7 +22,7 @@ virtualenv<br/>
 # download and prepare the environment
 git clone https://github.com/alexaleluia12/quadrado-flask.git
 cd quadrado-flask
-virtualenv env --python=your_python_2.7
+virtualenv env --python=python3
 source env/bin/activate
 pip install -r requirements.txt
 
@@ -34,4 +34,3 @@ python quadrado.py
 ```
 \* Cancel: Ctrl + c<br/>
 \* Get out virtualenv: `$ deactivate`
-
